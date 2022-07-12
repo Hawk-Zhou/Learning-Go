@@ -172,7 +172,7 @@ func (p processor) waitForC(ctx context.Context) (ret COut, err error) {
 	case err = <-p.errs:
 		return ret, fmt.Errorf("error detected at waitForC: %w", err)
 	case <-ctx.Done():
-		return ret, errors.New("Timeout(ctx) when waiting for C")
+		return ret, errors.New("timeout(ctx) when waiting for C")
 	}
 }
 
@@ -180,7 +180,7 @@ func main() {
 	wg := sync.WaitGroup{}
 	wg.Add(1)
 	outcomeCh <- success
-	outcomeCh <- success
+	outcomeCh <- timeout
 	outcomeCh <- success
 	timer(200*time.Millisecond, &wg)
 
@@ -188,7 +188,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("error received at main: %v\n", err)
 	} else {
-		fmt.Printf("Success, ret =%v\n", ret)
+		fmt.Printf("Success, ret = %v\n", ret)
 	}
 
 	wg.Wait()
