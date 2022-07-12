@@ -4,7 +4,7 @@
 This repo contains code I wrote/modified based on others' code that is valuable to me.
 
 ## Concurrency  
-- `concur_putting_everything_together.go`
+- concur_putting_everything_together.go
 
   > This is based on the example *Putting Our Concurrent Tools Together* from *Learning Go: An Idiomatic Approach to Real-World Go Programming*, Ch 10.
   >
