@@ -1,7 +1,7 @@
 # Learning-Go
 
 ## Intro
-This repo contains code I wrote/modified based on others' code that is valuable to me.
+This repo contains code I wrote/modified based on others' code that is valuable to me in terms of learning go.
 
 ## Concurrency  
 - concur_putting_everything_together.go
