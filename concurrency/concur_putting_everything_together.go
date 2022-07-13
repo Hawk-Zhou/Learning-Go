@@ -151,7 +151,7 @@ func (p processor) waitForAB(ctx context.Context) (CIn, error) {
 	for i := 0; i < 2; {
 		select {
 		case <-ctx.Done():
-			return CIn{}, errors.New("Timeout(ctx) when waiting for AB")
+			return CIn{}, fmt.Errorf("timeout(ctx) when waiting for AB: %w", ctx.Err())
 		case err := <-p.errs:
 			return CIn{}, fmt.Errorf("waitForAB got an error: %w", err)
 		case ret.retA = <-p.outA:
@@ -172,7 +172,7 @@ func (p processor) waitForC(ctx context.Context) (ret COut, err error) {
 	case err = <-p.errs:
 		return ret, fmt.Errorf("error detected at waitForC: %w", err)
 	case <-ctx.Done():
-		return ret, errors.New("timeout(ctx) when waiting for C")
+		return ret, fmt.Errorf("timeout(ctx) when waiting for C: %w", ctx.Err())
 	}
 }
 
